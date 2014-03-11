@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+.FieldName
+{
+	float: left;
+	height: 100%;
+	width: 200px;
+}
+.FieldValue
+{
+	float: left;
+	height: 100%;
+	width: 200px;
+}

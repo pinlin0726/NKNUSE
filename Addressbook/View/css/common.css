@@ -1,0 +1,173 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Global*/
+a{
+	text-decoration: none;
+}
+.Table{border:1px solid #cccccc; width:100%;border-collapse:collapse;}
+.Table td{border:1px solid #cccccc; color:#555555;text-align:center;line-height:28px;}
+.HeaderRow{ background-color:#0066cc;}
+.HeaderRow td{ color:#ffffff; text-align:center;}
+.DatarowOdd{background-color:#ffffff;}
+.DatarowEven{ background-color:#efefef;}
+.DatarowOdd td{background-color:#ffffff;}
+.DatarowEven td{ background-color:#efefef;}
+body
+{
+	font-family:Tahoma, Helvetica, Arial, sans-serif;
+	margin-top:0px;
+	margin-left:0px;
+	width:100%;background-color: #fdfdfd;
+	
+}
+/*General use*/
+.maincontent
+{
+	height: auto;
+	overflow: hidden;
+	width:993px;
+	*margin:0px auto;
+	_margin:0px auto;
+	margin:0px auto;
+}
+
+.RightBox
+{
+	width: 400px;
+	height: 570px;
+	float: left;
+}
+.LoginBox
+{
+	margin-top: 20px;
+	width: 380px;
+	margin-left: 10px;
+	height: 200px;
+}.LeftBox
+{
+	background-image: url('../images/LeftBox.png');
+	width: 500px;
+	height: 570px;
+	float: left;
+}
+
+/*footer*/
+.footer
+{
+	text-align:center;
+	font-family:Arial,sans-serif;
+	font-size:15px;
+	color:#555;
+	width:100%;
+	height:30px;
+	border-top:solid 1px #aaa;
+}
+
+.text_center{ 
+  text-align:center; 
+  margin-top:10px;
+}
+/*Header*/
+.toplistboxstatic
+{
+	color:#FFF;
+	float:left;
+	height:28px;
+	width:140px;
+	z-index:99;
+	background-color:#222;
+}
+.topbar
+{
+	text-align:center;
+	font-size:16px;
+	font-family:Arial,sans-serif;
+	width:100%;
+	height:27px;
+	border-bottom:solid 1px;
+    background:#000;
+	filter:Alpha(Opacity=85, FinishOpacity=85, Style=2); /* IE */
+    -moz-opacity:0.7; /* Moz + FF */
+    opacity:0.7; /* CSS3 */
+	z-index:1;
+}
+.loginbox
+{
+	color:#FFF;
+	float:right;
+	height:28px;
+	width:500px;
+	float:right;
+	margin-right:10px;
+	font-size:15px;
+}
+.location
+{
+	font-size:13px;
+	color:#FFF;
+	float:right;
+	height:28px;
+	width:450px;
+}
+.toplistbox
+{
+	color:#FFF;
+	float:left;
+	height:28px;
+	width:120px;
+	z-index:99;
+}
+.toplistbox1
+{
+	color:#FFF;
+	float:left;
+	height:28px;
+	width:120px;
+}
+.toplistbox2
+{
+	color:#FFF;
+	float:left;
+	height:28px;
+	width:120px;
+}
+.toplistbox3
+{
+	color:#FFF;
+	float:left;
+	height:28px;
+	width:120px;
+}
+.toplistbox4
+{
+	color:#FFF;
+	float:left;
+	height:28px;
+	width:120px;
+}
+.toplistbox:hover
+{
+	z-index:5;
+	background-color:#F00;
+}
+.toplistbox1:hover
+{
+	z-index:5;
+	background-color:#F00;
+}
+.toplistbox2:hover
+{
+	z-index:5;
+	background-color:#060;
+}
+.toplistbox3:hover
+{
+	z-index:5;
+	background-color:#F60;
+}
+.toplistbox4:hover
+{
+	z-index:5;
+	background-color:#00F;
+}

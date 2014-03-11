@@ -1,0 +1,112 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+	margin:0px;	
+}
+a{
+	text-decoration:none;
+	color:#000;
+}
+.toplistboxstatic
+{
+	color:#FFF;
+	float:left;
+	height:28px;
+	width:140px;
+	z-index:99;
+	background-color:#222;
+}
+.topbar
+{
+	text-align:center;
+	font-size:16px;
+	font-family:Arial,sans-serif;
+	width:100%;
+	height:27px;
+	border-bottom:solid 1px;
+    background:#000;
+	filter:Alpha(Opacity=85, FinishOpacity=85, Style=2); /* IE */
+    -moz-opacity:0.7; /* Moz + FF */
+    opacity:0.7; /* CSS3 */
+	z-index:1;
+}
+.loginbox
+{
+	color:#FFF;
+	float:right;
+	height:28px;
+	width:500px;
+	float:right;
+	margin-right:10px;
+	font-size:15px;
+}
+.location
+{
+	font-size:13px;
+	color:#FFF;
+	float:right;
+	height:28px;
+	width:450px;
+}
+.toplistbox
+{
+	color:#FFF;
+	float:left;
+	height:28px;
+	width:120px;
+	z-index:99;
+}
+.toplistbox1
+{
+	color:#FFF;
+	float:left;
+	height:28px;
+	width:120px;
+}
+.toplistbox2
+{
+	color:#FFF;
+	float:left;
+	height:28px;
+	width:120px;
+}
+.toplistbox3
+{
+	color:#FFF;
+	float:left;
+	height:28px;
+	width:120px;
+}
+.toplistbox4
+{
+	color:#FFF;
+	float:left;
+	height:28px;
+	width:120px;
+}
+.toplistbox:hover
+{
+	z-index:5;
+	background-color:#F00;
+}
+.toplistbox1:hover
+{
+	z-index:5;
+	background-color:#F00;
+}
+.toplistbox2:hover
+{
+	z-index:5;
+	background-color:#060;
+}
+.toplistbox3:hover
+{
+	z-index:5;
+	background-color:#F60;
+}
+.toplistbox4:hover
+{
+	z-index:5;
+	background-color:#00F;
+}
