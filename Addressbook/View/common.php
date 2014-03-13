@@ -26,7 +26,7 @@ class Common
 			$Target[]="_self";
 						
 			$Items[]="學生欄位設定";
-			$Links[]=$this->host."sub/addressbook/view/admin/manage/studentaccount.php";
+			$Links[]=$this->host."sub/addressbook/view/admin/manage/SetField.php";
 			$Target[]="_self";
 			
 			$Items[]="學生資料匯出";
