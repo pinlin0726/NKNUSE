@@ -17,11 +17,25 @@ class Field
 	{
 		$this->db=$db;
 	}
-
+	
+	public function IsFieldUsed($Field)
+	{
+		$sql = 'SELECT * FROM `field` WHERE `FieldName` = \''.$Field.'\' ';
+		$result=$this->db->query($sql);
+		$rows=$this->db->num_rows($result);
+		if($rows==1)
+		{
+			return true;
+		}else
+		{
+			return false;
+		}
+	}
+	
 	public function Insert($FieldName)
 	{
-		$sql = 'INSERT INTO `Field` (`FieldName`       ,  `FieldIsVisible`) 
-		VALUES                      (\''.$FieldName.'\',  \''.$FieldIsVisible.'\');';
+		$sql = 'INSERT INTO `Field` (`FieldName`) 
+		VALUES                      (\''.$FieldName.'\');';
 		$this->db->query($sql);
 	}
 	public function Update($FieldID,$FieldName)
