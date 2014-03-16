@@ -7,9 +7,11 @@ session_destroy();
 
 if($_POST['password']!=""&&$_POST['account']!=""&&$_POST['UserType']=="Admin")
 {
-	/*$_SESSION['UserType']="WebAdmin";
+	/*
+	$_SESSION['UserType']="WebAdmin";
 	$_SESSION['UserName']="Name";
-	$_SESSION['UserAccount']="Account";*/
+	$_SESSION['UserAccount']="Account";
+	*/
 	if(!ereg("^[A-Za-z0-9]+$", $_POST['password'])||!ereg("^[A-Za-z0-9]+$", $_POST['account']))
 		$err="含有非法字元!";
 	else
