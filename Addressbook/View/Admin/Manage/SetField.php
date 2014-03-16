@@ -38,10 +38,11 @@
 		if(!$Fields->IsFieldUsed($_POST['AddFieldName']))
 		{
 			$Fields->Insert($_POST['AddFieldName']);
+			$NewFieldID=$db->insert_id();
 			$Students->GetAll();
 			while($Students->HasNext())
 			{
-				$FieldRelates->Insert($Students->StudentID,$db->insert_id());
+				$FieldRelates->Insert($Students->StudentID,$NewFieldID);
 			}
 			$FieldError='<font color="green">提示 : 新增成功!</font>';
 		}
