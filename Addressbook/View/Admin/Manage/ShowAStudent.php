@@ -48,14 +48,15 @@
 			}
 			$Students->OnUpdateData($Students->StudentID);
 			$err="<font color=\"#00CC00\">-修改資料成功</font>";
+			//重新獲取學生資料
+			$Students->GetByID($SID);
+			$Students->HasNext();
 		}
 		
 		
 		$FieldRelates->GetByStudentID($Students->StudentID);
 		$Fields->GetAll();
 		
-		$Students->GetByID($SID);
-		$Students->HasNext();
 		
 	?>
 	<form action="ShowAStudent.php?SID=<? echo $SID; ?>" enctype="application/x-www-form-urlencoded" method="POST">
@@ -68,28 +69,21 @@
 		{
 			$value="";
 			if($FieldRelates->HasNext())
-			$value=$FieldRelates->FieldRelateValue;
-			echo '<div class="EachLine" ">';
-			
-			if($Fields->FieldIsVisible=="1")
 			{
-				
-				echo '<div class="FieldName">'.$Fields->FieldName.'  </div>';
-				echo '
-				<div class="FieldValue" >
-				<input name="Field'.$Fields->FieldID.'" class="InputText" style="margin-top:0px;" value="'.$value.'" type="text"/>
-				</div>';
+				$value=$FieldRelates->FieldRelateValue;
+				//如果欄位跟學生欄位ID不符，則防止別欄覆蓋，以空白顯示，FieldRelate的UpdateValue有錯誤回復的功能。
+				if($FieldRelates->FieldRelateFieldID!=$Fields->FieldID)
+					$value="";
 			}
 			else
-			{
-				
-				echo '<div class="FieldName">'.$Fields->FieldName.'  </div>';
-				echo '
-				<div class="FieldValue">
-				<input name="Field'.$Fields->FieldID.'" class="InputText" style="margin-top:0px;" value="'.$value.'" type="password" title="'.$value.'"/>
-				</div>';
-			}
-			echo '</div>';
+				$value="";
+			echo '
+			<div class="EachLine" ">
+				<div class="FieldName">'.$Fields->FieldName.'  </div>
+				<div class="FieldValue" >
+				<input name="Field'.$Fields->FieldID.'" class="InputText" style="margin-top:0px;" value="'.$value.'" type="text"/>
+				</div>
+			</div>';
 		}
 	?>
 		<div class="SubmitLine" style="background-image: none;">

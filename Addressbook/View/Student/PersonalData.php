@@ -37,52 +37,53 @@
 				$Fields->GetAll();
 				while($Fields->HasNext())
 				{
+				
 					$TempValue=mysql_real_escape_string(strip_tags($_POST['Field'.$Fields->FieldID]));
 					$FieldRelates->UpdateValue($Students->StudentID,$Fields->FieldID,$TempValue);
 				}
 				$Students->OnUpdateData($Students->StudentID);
 				$err="<font color=\"#00CC00\">-修改資料成功</font>";
+				//重新獲取學生資料
+				$Students->GetByID($_SESSION['UserID']);
+				$Students->HasNext();
 			}
 		}
 		
-		$FieldRelates->GetByStudentID($Students->StudentID);
-		$Fields->GetAll();
-		
-		$Students->GetByID($_SESSION['UserID']);
-		$Students->HasNext();
+
 	?>
 	<form action="personaldata.php" enctype="application/x-www-form-urlencoded" method="POST">
 	<input type="hidden" name="save" value="True"/>
 	<div class="maincontent">
 	<div style="height: 30px;width:100%"></div>
 	<div class="ExplainTitle" style="width:100%;">修改您的個人資料<? echo $err;?></div>
-	<?
+	<?				
+		//獲取表中欄位清單
+		$Fields->GetAll();
+		//獲取該學生的欄位值清單
+		$FieldRelates->GetByStudentID($Students->StudentID);
+		
 		while($Fields->HasNext())
-		{
-			$value="";
-			if($FieldRelates->HasNext())
-			$value=$FieldRelates->FieldRelateValue;
-			echo '<div class="EachLine" ">';
+		{			
 			
-			if($Fields->FieldIsVisible=="1")
+			$IsFieldIDCompatible=TRUE;
+			//理論上欄位清單與學生值清單應該是對應的
+			if($FieldRelates->HasNext())
 			{
-				
-				echo '<div class="FieldName">'.$Fields->FieldName.'  </div>';
-				echo '
-				<div class="FieldValue" >
-				<input name="Field'.$Fields->FieldID.'" class="InputText" style="margin-top:0px;" value="'.$value.'" type="text"/>
-				</div>';
+				$value=$FieldRelates->FieldRelateValue;
+				//如果欄位跟學生欄位ID不符，則防止別欄覆蓋，以空白顯示，FieldRelate的UpdateValue有錯誤回復的功能。
+				if($FieldRelates->FieldRelateFieldID!=$Fields->FieldID)
+					$value="";
 			}
 			else
-			{
-				
-				echo '<div class="FieldName">'.$Fields->FieldName.'  </div>';
-				echo '
-				<div class="FieldValue">
-				<input name="Field'.$Fields->FieldID.'" class="InputText" style="margin-top:0px;" value="'.$value.'" type="password" title="'.$value.'"/>
-				</div>';
-			}
-			echo '</div>';
+				$value="";
+			
+			echo '
+			<div class="EachLine"  >
+				<div class="FieldName" >'.$Fields->FieldName.'  </div>
+				<div class="FieldValue" >
+					<input name="Field'.$Fields->FieldID.'" class="InputText" style="margin-top:0px;" value="'.$value.'" type="text" />
+				</div>
+			</div>';
 		}
 	?>
 		<div class="SubmitLine" style="background-image: none;">

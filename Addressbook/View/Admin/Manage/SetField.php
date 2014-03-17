@@ -92,7 +92,6 @@
 	}
 ?>
 
-	<input type="hidden" name="save" value="True"/>
 	<div class="maincontent">
 	
 	
