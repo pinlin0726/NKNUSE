@@ -44,10 +44,10 @@
 			{
 				$FieldRelates->Insert($Students->StudentID,$NewFieldID);
 			}
-			$FieldError='<font color="green">提示 : 新增成功!</font>';
+			$FieldError='<font color="green">提示 : 新增欄位'.$_POST['AddFieldName'].'成功!</font>';
 		}
 		else
-			$FieldError='<font color="red">提示 : 欄位名稱已被使用!</font>';
+			$FieldError='<font color="red">提示 : 欄位'.$_POST['AddFieldName'].'已被使用!</font>';
 	}
 	
 	//update field
@@ -75,6 +75,21 @@
 		else
 			$FieldError='<font color="red">提示 : 找不到該欄位!</font>';
 	}
+	
+	// field IsVisible
+	if($_GET['Action']=="IsVisible"&&$_GET['SID']!="")
+	{
+		if($_GET['Visibility']==1)
+		{
+			$Fields->SetIsVisible($_GET['SID'],false);
+			$FieldError='<font color="green">提示 : 隱藏欄位!</font>';
+		}
+		else
+		{
+			$Fields->SetIsVisible($_GET['SID'],true);
+			$FieldError='<font color="green">提示 : 開啟欄位!</font>';
+		}	
+	}
 ?>
 
 	<input type="hidden" name="save" value="True"/>
@@ -96,6 +111,7 @@
 	<tr >
 		<td class="HeaderRow" style="color: white;">欄位</td>
 		<td class="HeaderRow" style="color: white;">修改</td>
+		<td class="HeaderRow" style="color: white;">隱藏</td>
 		<td class="HeaderRow" style="color: white;">刪除</td>
 	</tr>
 	<?
@@ -108,6 +124,12 @@
 				else
 				$Styles="DatarowEven";
 				$IsUseOddStyle=!$IsUseOddStyle;
+				
+				if($Fields->FieldIsVisible==1)
+					$ShowVisibility="X";
+				else
+					$ShowVisibility="V";
+					
 				echo
 				'
 				<form method="POST" action="SetField.php?Action=Update" enctype="application/x-www-form-urlencoded">
@@ -115,6 +137,7 @@
 				<tr >
 					<td class="'.$Styles.'" ><input type="text" name="FieldName"  value="'.$Fields->FieldName.'"/></td>
 					<td class="'.$Styles.'" ><input  type="submit"  value="修改"/></td>
+					<td class="'.$Styles.'" ><a href="SetField.php?Action=IsVisible&SID='.$Fields->FieldID.'&Visibility='.$Fields->FieldIsVisible.'"><font color="red">'.$ShowVisibility.'</font></a></td>
 					<td class="'.$Styles.'" ><a href="SetField.php?Action=Delete&SID='.$Fields->FieldID.'"><font color="red">Delete</font></a></td>
 				</tr>
 				</form>
