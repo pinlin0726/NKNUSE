@@ -1,7 +1,7 @@
 <?php
 class Common
 {
-	private $host="http://127.0.0.1/NKNUSE/";
+	private $host="http://127.0.0.1/sed/";
 	public function DrawHeader($UserType="Stduent")
 	{	
 		$Items=array();
@@ -30,7 +30,7 @@ class Common
 			$Target[]="_self";
 			
 			$Items[]="學生資料匯出";
-			$Links[]=$this->host."sub/addressbook/view/admin/manage/ExportData.php";
+			$Links[]=$this->host;
 			$Target[]="_self";
 		}
 		else
@@ -69,7 +69,8 @@ class Common
 			
 	  	echo'	
 	  			<div class="loginbox">
-			';
+	    		<div style="width:0px;height:6px"></div>
+				';
 				if($UserType=="WebAdmin")
 				echo 'User Name　　'. $_SESSION['UserName'] .'　<a href="'.$this->host.'sub/index.php?Action=Logout" style="color:white;">登出</a>';
 				else

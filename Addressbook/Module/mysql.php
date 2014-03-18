@@ -8,9 +8,9 @@ class Mysql
 	public function connect()
 	{	
 	    $DB_HOST="127.0.0.1";
-		$DB_LOGIN="root";
-		$DB_PASSWORD="ab014789";
-		$DB_NAME="se_addressbook";
+		$DB_LOGIN="test";
+		$DB_PASSWORD="setest";
+		$DB_NAME="se-addressbook";
 		if(!@$conn=mysql_connect($DB_HOST,$DB_LOGIN,$DB_PASSWORD))
 		{
 			echo $DB_HOST;

@@ -16,7 +16,7 @@ if($_POST['password']!=""&&$_POST['account']!=""&&$_POST['UserType']=="Admin")
 		$err="含有非法字元!";
 	else
 	{
-		/*include('../web/classlib/mysql.php');
+		include('../web/classlib/mysql.php');
 		include('../web/classlib/user.php');
 		$users=new user(new db_mysql());
 		$users->UserAccount=$_POST['account'];
@@ -33,12 +33,7 @@ if($_POST['password']!=""&&$_POST['account']!=""&&$_POST['UserType']=="Admin")
 		else
 		{ 
 			$err='<帳號或密碼錯誤>';
-		}	*/
-			$_SESSION['UserType']="WebAdmin";
-		$_SESSION['UserName']="Name";
-		$_SESSION['UserAccount']="Account";
-					header("Location:addressbook/View/Admin/index.php");
-
+		}	
 	}
 }
 if($_POST['password']!=""&&$_POST['account']!=""&&$_POST['UserType']=="Student")

@@ -60,12 +60,6 @@ class Field
 		}
 		return "Not found";
 	}
-	public function GetIDByName ($FieldName)/*write by LSC*/{
-		$sql = 'SELECT * FROM `Field` WHERE `FieldName` = \''.$FieldName.'\' ';
-		$res = $this->db->query($sql);
-		$row = $this->db->fetch_array($res);
-		return $row['FieldID'];
-	}
 	public function GetByID($FieldID)
 	{
 		$this->Rows=0;
@@ -105,11 +99,10 @@ class Field
 		return false;
 	}
 }
-
-/*include('mysql.php');
-$Field=new Field(new Mysql());
-echo $Field->GetIDByName(name);
 /*
+include('../module/mysql.php');
+$Field=new Field(new Mysql());
+
 $Field->GetByID(1);
 if($Field->HasNext())
 echo $Field->FieldName;
