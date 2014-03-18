@@ -7,7 +7,7 @@ class FieldRelate
 	//Execute result
 	private $Result;
 	//rows number of result
-	private $Rows;
+	public $Rows;
 
 	//Database fields
 	public $FieldRelateID;
@@ -52,6 +52,17 @@ class FieldRelate
 		WHERE `FieldRelateStudentID` = \''.$StudentID.'\' AND `FieldRelateFieldID` = \''.$FieldID.'\';';
 		$this->db->query($sql);
 	}
+
+public function GetByStudentIDAndFieldID($StudentID,$FieldID)/*Write by LSC*/
+	{
+		$this->Rows=0;
+		$sql='SELECT * FROM `FieldRelate` WHERE FieldRelateStudentID =\''.$StudentID.'\' AND FieldRelateFieldID =\''.$FieldID.'\' ORDER BY `FieldRelateID` ASC;';
+		//store return data to $this->Result
+		$this->Result=$this->db->query($sql);
+		//count the numbers of return data and save to $this->Rows
+		$this->Rows=$this->db->num_rows($this->Result);
+	}
+
 
 	public function GetByStudentID($StudentID)
 	{
