@@ -99,7 +99,7 @@ class Student
 	public function GetByGradeID($GradeID)
 	{
 		$this->Rows=0;
-		$sql = 'SELECT * FROM `student` WHERE `StudentGrade` = \''.$GradeID.'\'  ORDER BY   `StudentAccount` ASC ';
+		$sql = 'SELECT * FROM `student` WHERE `StudentGrade` = \''.$GradeID.'\'  ORDER BY   `StudentID` ASC ';
 		//store return data to $this->Result
 		$this->Result=$this->db->query($sql);
 		//count the numbers of return data and save to $this->Rows
