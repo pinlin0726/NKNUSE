@@ -19,17 +19,6 @@ foreach ($_POST['excel'] as $value){
 	$content.=$Fields->IDToName($value)."\t";
 }
 
-function IsInFieldArray($FieldID,$input)
-{
-	for($i=0;$i<sizeof($FieldID);$i++){
-		if($input==$FieldID[$i]){
-			return True;
-		}
-	}
-	return False;
-}
-
-
 $currentGrade = $_GET['currentGrade'];
 $Students->GetByGradeID($currentGrade);
 while($Students->HasNext()){
@@ -40,13 +29,12 @@ while($Students->HasNext()){
 	{
 		while($FieldRelates->HasNext())
 		{
-			if(IsInFieldArray($FieldID,$FieldRelates->FieldRelateFieldID))
+			if(in_array($FieldRelates->FieldRelateFieldID, $FieldID))
 			$content.=$FieldRelates->FieldRelateValue."\t";
 		}
 	}
 }
 	header("Content-type:application/vnd.ms-excel");
-	header("Content-Disposition:filename=".$Grades->IDToName($_GET['GID']).$Grades->IDToChinese( $Grades->IDToName($_GET['GID']))."學生密碼表.xls");
+	header("Content-Disposition:filename=".$Grades->IDToName($currentGrade)."級學生資料表.xls");
     echo $content;
-
 ?>

@@ -1,4 +1,5 @@
 
+<!doctype html>
 <html  lang="zh_tw">
 <head>
 	<meta charset="utf-8">
@@ -29,7 +30,6 @@
 		$currentGrade = $_GET['Grade'];
 	}
 ?>	
-
 <div style="height: 20px;width:100%;"></div>
 <div class="maincontent">
 	<div class="GradeArea">
@@ -51,11 +51,12 @@
 			</ul>
 		</div>
 	</div>
-	<form method="POST" action="StudentData.php?currentGrade=<?echo $currentGrade?>" enctype="application/x-www-form-urlencoded" target="_blank">
 	<div class="StudentArea">
+		<form method="POST" action="StudentData.php?currentGrade=<?echo $currentGrade?>" enctype="application/x-www-form-urlencoded" target="_blank">
 		<div class="ExplainTitle" style="margin-left: 15px;width:100%;"><?echo $Grades->IDToName($currentGrade)?>學生資料列表
 		<input type = "submit" value="點此匯出為excel">
 		</div>
+		<div class="ExplainLine" style="width:100%; margin-left: 15px; margin-top:10px;">
 		<table class="Table" style="width:95%;">
 			<tr>
 				<?
@@ -71,19 +72,19 @@
 					}
 				?>
 			</tr>
-		</form>	
 			<?
 				$IsUseOddStyle = True;
 				$HasValue = False;
 				$Students->GetByGradeID($currentGrade);
 				while($Students->HasNext()){
+					echo '<tr>';
 					$FieldRelates->GetByStudentID($Students->StudentID);
 					if($IsUseOddStyle)
 						$Styles="DatarowOdd";
 						else
 						$Styles="DatarowEven";
 						$IsUseOddStyle=!$IsUseOddStyle;
-						echo '<td class="'.$Styles.'">'.$Students->StudentAccount.'</td>';
+						echo '<td class="'.$Styles.'"><a target="_blank" href="ShowAStudent.php?SID='.$Students->StudentID.'" style="color:blue">'.$Students->StudentAccount.'</td>';
 					while($FieldRelates->HasNext())
 					{
 						echo
@@ -95,9 +96,14 @@
 					}
 	
 		?>
-		</table>	
+		</table>
+		</form>
 	</div>
+	</div>	
 </div>	
+<div style="height: 20px;width:100%;"></div>
 <?
 	$view->DrawFooter();
 ?>
+</body>
+</html>
