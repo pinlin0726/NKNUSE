@@ -1,4 +1,11 @@
-
+<?
+	@session_start();
+	if(!isset($_SESSION['UserType'])||$_SESSION['UserType']!="WebAdmin"||!isset($_SESSION['UserName']))
+	{
+		header("Location:../../../../index.php");
+		die();
+	}
+?>
 <!doctype html>
 <html  lang="zh_tw">
 <head>
