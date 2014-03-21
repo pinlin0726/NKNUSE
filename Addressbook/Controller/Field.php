@@ -40,7 +40,7 @@ class Field
 	}
 	public function Update($FieldID,$FieldName)
 	{
-		$sql = 'UPDATE `Field` SET `FieldID`=\''.$FieldID.'\' ,`FieldName`=\''.$FieldName.'\' ;';
+		$sql ='UPDATE `Field` SET `FieldName`=\''.$FieldName.'\' WHERE `FieldID`=\''.$FieldID.'\' ' ;
 		$this->db->query($sql);
 	}
 	public function DeleteByID($FieldID)
