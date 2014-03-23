@@ -20,11 +20,11 @@ $Grades=new Grade($db);
 $FieldRelates=new FieldRelate($db);
 $Fields=new Field($db);
 
-$content.="number"."\t";
+$content.=iconv('utf-8','big5', "學生學號")."\t";
 $FieldID = array();
 foreach ($_POST['excel'] as $value){
 	$FieldID[] = $value;
-	$content.=$Fields->IDToName($value)."\t";
+	$content.=iconv('utf-8','big5', $Fields->IDToName($value))."\t";
 }
 
 $currentGrade = $_GET['currentGrade'];
@@ -38,7 +38,7 @@ while($Students->HasNext()){
 		while($FieldRelates->HasNext())
 		{
 			if(in_array($FieldRelates->FieldRelateFieldID, $FieldID))
-			$content.=$FieldRelates->FieldRelateValue."\t";
+			$content.=iconv('utf-8','big5', $FieldRelates->FieldRelateValue)."\t";
 		}
 	}
 }
