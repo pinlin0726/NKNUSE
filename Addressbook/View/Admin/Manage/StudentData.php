@@ -1,4 +1,3 @@
-
 <?
 	@session_start();
 	if(!isset($_SESSION['UserType'])||$_SESSION['UserType']!="WebAdmin"||!isset($_SESSION['UserName']))

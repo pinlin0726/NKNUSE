@@ -50,9 +50,12 @@ while($Grades->HasNext())
 <div class="maincontent">
 	<form method="POST" action="StudentData.php?currentGrade=<?echo $currentGrade?>" enctype="application/x-www-form-urlencoded" target="_blank">
 	<div class="ExplainTitle" style="margin-left: 15px;width:100%;">
-	<select name="GradeInfo" style="width:80px;height:25px;" onchange="location.href=this.options[this.selectedIndex].value;">
-		<option  value="-1">=請選擇=</option>
+	<select name="GradeInfo" style="width:90px;height:50px;font-size:50%;" onchange="location.href=this.options[this.selectedIndex].value;">
 		<?
+				if(isset($_GET['Grade']))
+					echo '<option  value="-1">'.$Grades->IDToName($currentGrade).'('.$Grades->IDToChinese($Grades->IDToName($currentGrade)).')</option>';
+				else	
+					echo '<option  value="-2">=請選擇=</option>';
 				$Grades->GetAll();
 				while($Grades->HasNext())
 				{
@@ -60,7 +63,7 @@ while($Grades->HasNext())
 				}
 		?>
 	</select> 
-		<?echo $Grades->IDToName($currentGrade)?>學生資料列表
+		學生資料列表
 		<input type = "submit" value="點此匯出為excel">
 		</div>
 		<div class="ExplainLine" style="width:100%; margin-left: 15px; margin-top:10px;">
