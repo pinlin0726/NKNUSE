@@ -36,31 +36,31 @@
 	if(isset($_GET['Grade'])){
 		$currentGrade = $_GET['Grade'];
 	}
+$Grades->GetAll();
+while($Grades->HasNext())
+{
+	if(!isset($_GET['Grade']))
+	{
+		$currentGrade=$Grades->GradeID;
+		$_GET['Grade'] = $currentGrade;
+	}
+}
 ?>	
 <div style="height: 20px;width:100%;"></div>
 <div class="maincontent">
-	<div class="GradeArea">
-		<div class="ExplainTitle" style="margin-left: 15px;">學生資料匯出</div>
-		<div class="GradeLine">
-			<ul>
-				<?
-					$Grades->GetAll();
-					while($Grades->HasNext())
-					{
-						if(!isset($_GET['Grade']))
-						{
-							$currentGrade=$Grades->GradeID;
-							$_GET['Grade'] = $currentGrade;
-						}
-						echo '<li><a href="ExportData.php?Grade='.$Grades->GradeID.'">'.$Grades->GradeName.' ('.$Grades->IDToChinese($Grades->GradeName).')</a></li>';
-					}
-				?>
-			</ul>
-		</div>
-	</div>
-	<div class="StudentArea">
-		<form method="POST" action="StudentData.php?currentGrade=<?echo $currentGrade?>" enctype="application/x-www-form-urlencoded" target="_blank">
-		<div class="ExplainTitle" style="margin-left: 15px;width:100%;"><?echo $Grades->IDToName($currentGrade)?>學生資料列表
+	<form method="POST" action="StudentData.php?currentGrade=<?echo $currentGrade?>" enctype="application/x-www-form-urlencoded" target="_blank">
+	<div class="ExplainTitle" style="margin-left: 15px;width:100%;">
+	<select name="GradeInfo" style="width:80px;height:25px;" onchange="location.href=this.options[this.selectedIndex].value;">
+		<option  value="-1">=請選擇=</option>
+		<?
+				$Grades->GetAll();
+				while($Grades->HasNext())
+				{
+					echo '<option size="8"  value="ExportData.php?Grade='.$Grades->GradeID.'">'.$Grades->GradeName.' ('.$Grades->IDToChinese($Grades->GradeName).')</option>';
+				}
+		?>
+	</select> 
+		<?echo $Grades->IDToName($currentGrade)?>學生資料列表
 		<input type = "submit" value="點此匯出為excel">
 		</div>
 		<div class="ExplainLine" style="width:100%; margin-left: 15px; margin-top:10px;">
@@ -81,7 +81,6 @@
 			</tr>
 			<?
 				$IsUseOddStyle = True;
-				$HasValue = False;
 				$Students->GetByGradeID($currentGrade);
 				while($Students->HasNext()){
 					echo '<tr>';
@@ -106,7 +105,6 @@
 		</table>
 		</form>
 	</div>
-	</div>	
 </div>	
 <div style="height: 20px;width:100%;"></div>
 <?
