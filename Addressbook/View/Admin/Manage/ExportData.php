@@ -67,15 +67,16 @@ while($Grades->HasNext())
 		<input type = "submit" value="點此匯出為excel">
 		</div>
 		<div class="ExplainLine" style="width:100%; margin-left: 15px; margin-top:10px;">
+		<div class="ScrollBar" style="overflow-x:scroll;">
 		<table class="Table" style="width:95%;">
 			<tr>
 				<?
 					$Fields->GetAll();
-					echo '<td class="HeaderRow" style="color: white;">學號';
+					echo '<td class="HeaderRow" style="color: white;width: 1px;white-space:nowrap">學號';
 					while($Fields->HasNext())
 					{
 						echo'
-						<td class="HeaderRow" style="color: white;">'.$Fields->FieldName.'
+						<td class="HeaderRow" style="color: white;white-space:nowrap">'.$Fields->FieldName.'
 						<Input type="checkbox" name="excel[]" value='.$Fields->FieldID.' checked>
 						</td>
 							';
@@ -93,12 +94,12 @@ while($Grades->HasNext())
 						else
 						$Styles="DatarowEven";
 						$IsUseOddStyle=!$IsUseOddStyle;
-						echo '<td class="'.$Styles.'"><a target="_blank" href="ShowAStudent.php?SID='.$Students->StudentID.'" style="color:blue">'.$Students->StudentAccount.'</td>';
+						echo '<td class="'.$Styles.'"style="white-space:nowrap"><a target="_blank" href="ShowAStudent.php?SID='.$Students->StudentID.'" style="color:blue">'.$Students->StudentAccount.'</td>';
 					while($FieldRelates->HasNext())
 					{
 						echo
 						'
-						<td class="'.$Styles.'">'.$FieldRelates->FieldRelateValue.'</td>
+						<td class="'.$Styles.'"style="white-space:nowrap">'.$FieldRelates->FieldRelateValue.'</td>
 						';
 						}
 						echo '</tr>';
@@ -106,6 +107,7 @@ while($Grades->HasNext())
 	
 		?>
 		</table>
+		</div>
 		</form>
 	</div>
 </div>	

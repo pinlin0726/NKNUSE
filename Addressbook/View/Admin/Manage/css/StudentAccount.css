@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 .GradeArea
 {
@@ -24,4 +24,10 @@
     overflow:hidden;
     white-space: nowrap;
     text-overflow:ellipsis;
+}
+.ScrollBar
+{
+	width:980px;
+      height:auto;
+	overflow:auto;
 }
